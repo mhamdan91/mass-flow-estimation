@@ -16,6 +16,68 @@ MAIN_dir = '/home/moe/Desktop/bambo_Logs/Data/simple_dataset/regression/sorts/'
 data_files_dir = '/home/moe/PycharmProjects/step_step/Cleaned_code/data_files/'
 
 
+'''
+Provide your dataset that needs to be consumed
+
+'''
+# dataset_dir = MAIN_dir + '2017_08_04_1043_Flow_Test_30_587_regression/'
+
+labels_r = []
+images_path_r = []
+speeds_r = []
+log_length_r = []
+
+labels_t = []
+images_path_t = []
+speeds_t = []
+log_length_t =[]
+
+# raw_label = np.load("predicted_labels_208.npy")
+
+elv_speed_train = np.load('train_sorts_speeds.npy')
+elv_speed_test = np.load('test_sorts_speeds.npy')
+
+lengths_t = [251, 527, 433, 361]
+lengths_r = [511, 520, 147, 448, 553, 254, 622] 
+weight_t = [619, 0, 626, 555]
+weight_r = [640, 0, 5.7, 623, 0, 636, 623]
+# elv = np.concatenate((elv_speed_2[:208], elv_speed))
+
+log_length =[]
+for index, subset_ in enumerate(sorted(os.listdir(MAIN_dir))):
+    subset_path = MAIN_dir + subset_ + '/'
+    for idx, log in enumerate(sorted(os.listdir(subset_path))):
+        log_path = subset_path + log+'/'
+        image_files = sorted(os.listdir(log_path))
+        print(log_path)
+        for i, image_ in enumerate(image_files):
+            if index == 0:
+                images_path_t.append(log_path+image_)
+                labels_t.append(np.float32([weight_t[idx]]))
+                speeds_t.append([elv_speed_test[i]])
+                log_length_t.append(np.float32(lengths_t[idx]))
+            else:
+                images_path_r.append(log_path+image_)
+                labels_r.append(np.float32([weight_r[idx]]))
+                speeds_r.append([elv_speed_train[i]])
+                log_length_r.append(np.float32(lengths_r[idx]))
+        if idx == 1: # get 2 logs only 
+            break
+labels_r = np.asarray(labels_r)
+labels_t = np.asarray(labels_t)
+
+speeds_r = np.asarray(speeds_r) 
+speeds_t = np.asarray(speeds_t) 
+print(np.shape(labels_r), np.shape(images_path_r), np.shape(speeds_r), np.shape(log_length_r))
+
+
+
+
+'''
+The following three functions are used to read data, normalize images, and apply a certain mask to images.
+you can write your own function to do what you need
+'''
+
 def parse_function(filename, weight, speed, log_length):
     # Get the image as raw bytes.
     image_name = tf.read_file(filename)
@@ -52,6 +114,11 @@ def data_masking(image, weight, speed, log_length):
     return masked_img, weight, speed, log_length
 
 
+
+'''
+This code segment is responsible for consuming the dataset.
+Dataset should be fed in the form of tensor slices i.e numpy arrays of matching dimensions
+'''
 Batch_size = 8
 Buffer_size = 8
 Epochs = 70
