@@ -1,1 +1,1 @@
-# 2d_flow_prediction
+# Mass Flow Prediction From Images Using Ligh-weight DNN in a Semi-supervised Setting
