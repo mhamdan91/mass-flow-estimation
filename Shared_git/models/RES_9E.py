@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-""" This model is adapted from the tf.keras.applications.ResNet50.
-
+""" This model is adapted from the tf.tensorflow.contrib.eager.python.examples.resnet50.
+Onlu a set of selected layers from the Original ResNet50 model are implemented
 The model definition compatible with TensorFlow's eager execution.
 
+The output of this model is a single logit
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -24,7 +25,6 @@ from __future__ import print_function
 import functools
 
 import tensorflow as tf
-
 
 layers = tf.keras.layers
 
@@ -64,6 +64,7 @@ class _IdentityBlock(tf.keras.Model):
     x = tf.nn.elu(x)
 
     x = self.conv2c(x)
+
 
     x += input_tensor
     return tf.nn.elu(x)
@@ -109,7 +110,6 @@ class _ConvBlock(tf.keras.Model):
 
     x = self.conv2c(x)
 
-
     shortcut = self.conv_shortcut(input_tensor)
 
     x += shortcut
@@ -118,7 +118,7 @@ class _ConvBlock(tf.keras.Model):
 
 
 # pylint: disable=not-callable
-class Res9ER(tf.keras.Model):
+class Res9E(tf.keras.Model):
   """Instantiates the ResNet50 architecture.
 
   Args:
@@ -146,8 +146,8 @@ class Res9ER(tf.keras.Model):
       ValueError: in case of invalid argument for data_format.
   """
 
-  def __init__(self, data_format, name='', trainable=True, include_top=True, pooling=None, classes=1):
-    super(Res9ER, self).__init__(name=name)
+  def __init__(self, data_format, name='', trainable=True, include_top=True, pooling=None, classes=1):    # modified
+    super(Res9E, self).__init__(name=name)
 
     valid_channel_values = ('channels_first', 'channels_last')
     if data_format not in valid_channel_values:
@@ -160,12 +160,11 @@ class Res9ER(tf.keras.Model):
     def id_block(filters, stage, block):
       return _IdentityBlock(3, filters, stage=stage, block=block, data_format=data_format)
 
-    self.conv1 = layers.Conv2D(32, (7, 7), strides=(2, 2), data_format=data_format, padding='same', name='conv1')
-
+    self.conv1 = layers.Conv2D(64, (7, 7), strides=(2, 2), data_format=data_format, padding='same', name='conv1')
     self.max_pool = layers.MaxPooling2D((3, 3), strides=(2, 2), data_format=data_format)
 
-    self.l2a = conv_block([32, 32, 128], stage=2, block='a', strides=(1, 1))
-    self.l2b = id_block([32, 32, 128], stage=2, block='b')
+    self.l2a = conv_block([64, 64, 256], stage=2, block='a', strides=(1, 1))
+    self.l2b = id_block([64, 64, 256], stage=2, block='b')
 
     self.avg_pool = layers.AveragePooling2D((23, 35), strides=(23, 35), data_format=data_format)  # modified for 5th
 
@@ -201,7 +200,6 @@ class Res9ER(tf.keras.Model):
     x = self.avg_pool(x)
 
     if self.include_top:
-
       return self.regressor(self.flatten(x))
     elif self.global_pooling:
       x = self.global_pooling(x)
