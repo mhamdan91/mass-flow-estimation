@@ -1,2 +1,0 @@
-model_checkpoint_path: "/home/moe/PycharmProjects/clean_code/Cleaned_code/Shared_git/checkpoints/generated_checkpoints/cp-random.ckpt"
-all_model_checkpoint_paths: "/home/moe/PycharmProjects/clean_code/Cleaned_code/Shared_git/checkpoints/generated_checkpoints/cp-random.ckpt"
