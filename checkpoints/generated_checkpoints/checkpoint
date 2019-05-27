@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/moe/PycharmProjects/Semi_supervised_work/Deliverable_code/checkpoints/generated_checkpoints/cp-test_run.ckpt"
+all_model_checkpoint_paths: "/home/moe/PycharmProjects/Semi_supervised_work/Deliverable_code/checkpoints/generated_checkpoints/cp-test_run.ckpt"
