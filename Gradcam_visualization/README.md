@@ -1,4 +1,6 @@
 # GradCAM visualization of Mass Estimation from Images
+### Implementation
+The code provided herein is implemented in TF1.12 and compatible with eager mode.
 
 ## To run the code
 Simply run the visualize_cam.py with specifying the following arguments directly in terminal.
