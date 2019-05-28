@@ -11,7 +11,7 @@ If you would like to visualize a paritcular image, make sure to place the image 
 * '-o', '--output_image', default='sample.png', type=str,   help='Full name of output image (should be .png) -- default set to '
 
 ### Simplist use  
--- this runs the cam with sample.bmp image located in /images/input/ 
+This runs the cam with **sample.bmp** image located in *_/images/input/_* 
  - python3 visualize_cam.py -t 1 
 
 #### Output
