@@ -18,11 +18,11 @@ This runs in training mode with existing checkpoints then visualize the predicte
  - python3 estimate.py -t 1 
 
 
-#### Note:
+### Note:
 * Test accuracy of test log using RES9_ER should give an accuracy of **99.45%** and if trained with option 1 for 1 epoch (i.e. python3 estimate.py -t 1 -e 1), accuracy can top **99.67%**. This attached code is tested with TF1.12 and compabatible with linux and windows machines. Also, make sure to include/install all TF dependencies as per used in the code.
 * When training, checkpoints for certain accuracies are automatically saved in generated_checkpoints folder in side the main checkpoints folder
 
-### Aditional Note
+#### Aditional Note
 Gradcam code is provided seperately in the Gradcam_visualization folder, navigate to the Readme file in that folder for instructions on usage.
 
 ## Author
