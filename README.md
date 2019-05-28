@@ -8,7 +8,7 @@ To run the code, simply run the estimate.py with specifying the following argume
 
 ###Args
 * '-n', '--network_size', default=None, type=int, help= '(9: RES9E, 16:RES16E) -- default set to: RES9ER'
-* '-b', '--batch_size',default=8, type=int,help='(between 1<=b<=511 (log size=511). depends on GPU/CPU ram capacity -- default set to: 8 '
+* '-b', '--batch_size',default=8, type=int,help='(between 1<=b<=215 (smallest log size=215). depends on GPU/CPU ram capacity -- default set to: 8 '
 * '-t', '--train_mode', default=0, type=int, help='0: No training, 1: continue with existing checkpoint, 2: train from scratch) -- set to default: 0 '
 * '-e', '--training_epochs', default=10, type=int, help='-- default set to 10'
 * '-v', '--visualize', default=1, type=int, help='(0, No visualization, 1: validate and visualize log signal) -- defualt set to: 1 '
