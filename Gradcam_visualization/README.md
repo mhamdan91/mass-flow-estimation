@@ -18,7 +18,7 @@ This runs the cam with **sample.bmp** image located in *_/images/input/_*
 This code produces an CAM image for input image in this directory */images/ouput*
 
 ##### Acknowledgements
-Parts of the code was adapted from:
+Part of the code was adapted from:
 TF session implementation.
 https://github.com/adityac94/Grad_CAM_plus_plus
 
