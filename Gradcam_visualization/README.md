@@ -6,7 +6,7 @@ The code provided herein is implemented in TF1.12 and compatible with **eager mo
 Simply run the **visualize_cam.py** with specifying the following arguments directly in terminal.
 If you would like to visualize a paritcular image, make sure to place the image in this directory */images/input/*
 
-###Args
+### Args
 * '-i', '--input_image', default='sample.bmp', type=str, help= '(Full name of the input image -- default set to sample.bmp'
 * '-o', '--output_image', default='sample.png', type=str,   help='Full name of output image (should be .png) -- default set to input_image.png '
 
