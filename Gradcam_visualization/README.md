@@ -8,7 +8,7 @@ If you would like to visualize a paritcular image, make sure to place the image 
 
 ###Args
 * '-i', '--input_image', default='sample.bmp', type=str, help= '(Full name of the input image -- default set to sample.bmp'
-* '-o', '--output_image', default='sample.png', type=str,   help='Full name of output image (should be .png) -- default set to '
+* '-o', '--output_image', default='sample.png', type=str,   help='Full name of output image (should be .png) -- default set to input_image.png '
 
 ### Simplist use  
 This runs the cam with **sample.bmp** image located in *_/images/input/_* 
