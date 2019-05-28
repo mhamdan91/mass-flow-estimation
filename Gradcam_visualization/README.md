@@ -4,7 +4,7 @@ The code provided herein is implemented in TF1.12 and compatible with **eager mo
 
 ## To run the code
 Simply run the **visualize_cam.py** with specifying the following arguments directly in terminal.
-If you would like to visualize a paritcular image, make sure to place the image in this directory __/images/input/__
+If you would like to visualize a paritcular image, make sure to place the image in this directory */images/input/*
 
 ###Args
 * '-i', '--input_image', default='sample.bmp', type=str, help= '(Full name of the input image -- default set to sample.bmp'
@@ -14,7 +14,7 @@ If you would like to visualize a paritcular image, make sure to place the image 
  - python3 visualize_cam.py -t 1 
 
 #### Output
-This code produces an CAM image for input image in this directory __/images/ouput__
+This code produces an CAM image for input image in this directory */images/ouput*
 
 
 # Author
