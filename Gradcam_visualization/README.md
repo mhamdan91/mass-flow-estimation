@@ -10,7 +10,8 @@ If you would like to visualize a paritcular image, make sure to place the image 
 * '-i', '--input_image', default='sample.bmp', type=str, help= '(Full name of the input image -- default set to sample.bmp'
 * '-o', '--output_image', default='sample.png', type=str,   help='Full name of output image (should be .png) -- default set to '
 
-### Simplist use  -- this runs the cam with sample.bmp image located in /images/input/ 
+### Simplist use  
+-- this runs the cam with sample.bmp image located in /images/input/ 
  - python3 visualize_cam.py -t 1 
 
 #### Output
