@@ -154,7 +154,7 @@ def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, 
             title = 'Visualization of ' + name + ' logs'
             break
     lb2kg = 0.453592
-    # NOT DOING SUBPLOTS because maximum output plots are 2
+    # NOT DOING SUBPLOTS
     for i in range(len(signalz)):
         gt = np.squeeze(signalz[i][0]) * lb2kg
         prd = np.sum(signalz[i][2]) * lb2kg
