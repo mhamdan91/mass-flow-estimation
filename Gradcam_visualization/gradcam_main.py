@@ -64,8 +64,7 @@ def cam_vis(in_img_name, out_img_name):
     sample_image = cf.data_normalization(cf.data_resize(cf.parse_function(in_path)))
     sample_image = tf.reshape(sample_image, [1, 96, 144, 3])
     image = tf.convert_to_tensor(sample_image)
-    # print(colored(in_path, 'red'))
-    # print(sample_image)
+
     # Instantiate the model and configure tensorbaord and checkpoints
     data_format = 'channels_last'
     model = Res.Res9ER(data_format=data_format, include_top=True, pooling=None, classes=1)
@@ -83,7 +82,9 @@ def cam_vis(in_img_name, out_img_name):
         cost, layer_conv = model(image, conv_out=True)
         prediction_raw.append(cost)
 
+    # this is for guided-backprop -- not used
     gb_grad = tape.gradient(cost, image)
+
     target_conv_layer_grad = tape.gradient(cost, layer_conv)
     del tape
     conv_first_grad = tf.exp(cost) * target_conv_layer_grad
@@ -124,7 +125,8 @@ def cam_vis(in_img_name, out_img_name):
     # plt.imshow(img2)
 
     visualize_mod(img2, cam, out_path)
-    print(colored('Successfully generated a cam', 'blue'))
+    print(colored('successfully generated a cam', 'blue'))
+
     if machine_type == 'Linux':
         subprocess.Popen(['xdg-open', output_path])
     elif machine_type == 'Windows':
