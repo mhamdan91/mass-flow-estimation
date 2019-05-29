@@ -160,7 +160,11 @@ def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, 
         prd = np.sum(signalz[i][2]) * lb2kg
         vprd = np.sum(signalz[i][4]) * lb2kg
         plt.figure(i+1)
-        plt.plot(signalz[i][4], '--', color='r')
+        if machine_type == 'Linux':
+            vol_sig = signalz[i][4]
+        else:
+            vol_sig = (np.reshape(signalz[i][4], [len(signalz[i][4])]))
+        plt.plot(vol_sig, '--', color='red')
         plt.plot(signalz[i][2], '--', lineWidth=2)
         relative = ''
         if gt > 0:
@@ -216,8 +220,8 @@ def predictor(network_size=None, batch_size=8, train_mode=0, epochs=10, visualiz
     else:
         from models import RES_9ER as Res
         model = Res.Res9ER(data_format=data_format, include_top=True, pooling=None, classes=1)
-        # Instantiate the model and configure tensorbaord and checkpoints
-        print(colored('model was successfully constructed!', 'blue'))
+    # Instantiate the model and configure tensorbaord and checkpoints
+    print(colored('model was successfully constructed!', 'blue'))
 
     # LOAD checkpoint if you wish to test results
     if (train_mode == 0 and visualize) or train_mode == 1:

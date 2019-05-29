@@ -47,11 +47,6 @@ def validate_model(batch_size, model_loc, val_step_, n_logs, summary_writer, dat
     signal = []
     signals = []
     for (batch, (images, labels, speeds, log_length)) in (enumerate(data_set)):
-        # size = np.shape(label)[0]
-        # labels = tf.reshape(label, [size, 1])
-        # speeds = tf.reshape(speed, [size, 1])
-        # log_length = tf.squeeze(lengths)
-        # images = tf.squeeze(image)
         batch += 1
         if new_log:
             new_log = False
@@ -118,10 +113,15 @@ def validate_model(batch_size, model_loc, val_step_, n_logs, summary_writer, dat
 
             gt = np.squeeze(labels[0].numpy())
             metric_mse.append(loss_unsigned)
-
-            tmp = np.abs(gt - mass)
-            tmp = tmp / gt
-            log_acc = 1 - np.squeeze(tmp)
+            # average total weight = 598*lb2kg = ~271 kg-- relative accuracy
+            if gt > 0:
+                tmp = np.abs(gt - mass)
+                tmp = tmp / gt
+                log_acc = 1 - np.squeeze(tmp)
+            else:
+                tmp = np.abs((271+gt) - (271+mass))
+                tmp = tmp / (271+gt)
+                log_acc = 1 - np.squeeze(tmp)
 
             Accuracy.append(log_acc)
             log_order.append(np.squeeze(log_length[0].numpy()))
