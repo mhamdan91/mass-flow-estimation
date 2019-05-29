@@ -12,7 +12,7 @@ If you would like to visualize a paritcular image, make sure to place the image 
 
 ### Simplist use  
 This runs the cam with **sample.bmp** image located in *_/images/input/_* 
- - python3 visualize_cam.py -t 1 
+ - python3 visualize_cam.py
 
 #### Output
 This code produces an CAM image for input image in this directory */images/ouput*
