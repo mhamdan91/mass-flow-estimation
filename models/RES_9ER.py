@@ -1,4 +1,4 @@
-# Copyright 2017 The TensorFlow Authors. All Rights Reserved.
+# Copyright 2019 Muhammad K.A. Hamdan. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-""" This model is adapted from the tf.tensorflow.contrib.eager.python.examples.resnet50.
-Onlu a set of selected layers from the Original ResNet50 model are implemented
-The model definition compatible with TensorFlow's eager execution.
-
+""" Acknoledgement and Creditation
+This model is adapted from the tf.tensorflow.contrib.eager.python.examples.resnet50.
+Only a set of selected layers from the Original ResNet50 model are implemented
+The model definition is compatible with TensorFlow's eager execution.
 The output of this model is a single logit
 """
 from __future__ import absolute_import
