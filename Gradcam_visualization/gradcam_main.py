@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 import time
 import  cv2
 import platform
-
 from skimage.transform import resize
 import warnings
 
@@ -26,6 +25,7 @@ if machine_type == 'Linux':
     path_sep = '/'
 else:
     path_sep = '\win'
+path_sep= path_sep[0]
 MAIN_dir = os.getcwd() + path_sep
 checkpoint_path = MAIN_dir +'checkpoint'+path_sep
 model_path = MAIN_dir + 'model'+path_sep
@@ -126,6 +126,6 @@ def cam_vis(in_img_name, out_img_name):
     visualize_mod(img2, cam, out_path)
     print(colored('Successfully generated a cam', 'blue'))
     if machine_type == 'Linux':
-    	subprocess.Popen(['xdg-open', output_path])
+        subprocess.Popen(['xdg-open', output_path])
     elif machine_type == 'Windows':
-    	os.startfile(output_path)
+        os.startfile(output_path)
