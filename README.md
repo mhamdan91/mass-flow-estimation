@@ -26,4 +26,4 @@ This runs in training mode with existing checkpoints then visualize the predicte
 Gradcam code is provided seperately in the Gradcam_visualization folder, navigate to the Readme file in that folder for instructions on usage.
 
 ## Author
-Muhammad K.A.Hamdan
+Muhammad K.A. Hamdan
