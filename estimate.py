@@ -13,7 +13,7 @@ def predictor(Network_size=None, Batch_size = 8, train_mode=0, epochs_= 10, visu
         dataset = 'validation'
     else:
         dataset = 'test'
-    Sample_main.predictor(Network_size, Batch_size, train_mode , epochs_, visualize, dataset)
+    mass_flow.predictor(Network_size, Batch_size, train_mode , epochs_, visualize, dataset)
     # print(Network_size,Batch_size, train_mode, epochs_,visualize)
 
 def main():
