@@ -1,5 +1,5 @@
 # from utils import Sample_main
-import Sample_main
+import mass_flow
 import numpy as np
 import tensorflow as tf
 import argparse
