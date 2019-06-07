@@ -5,10 +5,10 @@ import sys
 import platform
 
 machine_type = platform.uname()[0]
-if machine_type == 'Linux':
-    path_sep = '/'
-else:
+if machine_type == 'Windows':
     path_sep = '\win'
+else:
+    path_sep = '/'
 path_sep = path_sep[0]
 MASK_path = os.getcwd() + path_sep + 'utils' + path_sep + 'mask' + path_sep + 'mask_binary_mod.bmp'
 
