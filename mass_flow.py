@@ -26,10 +26,10 @@ SETUP BASICS START
 '''
 machine_type = platform.uname()[0]
 
-if machine_type == 'Linux':
-    path_sep = '/'
-else:
+if machine_type == 'Windows':
     path_sep = '\win'
+else:
+    path_sep = '/'
 path_sep = path_sep[0]
 MAIN_dir = os.getcwd() + path_sep
 checkpoint_path = MAIN_dir + 'checkpoints' + path_sep
