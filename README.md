@@ -2,9 +2,10 @@
 # Mass Estimation from Images with Sparse ground Truth using DNN
 ### Implementation
 The code provided herein is implemented in TF1.12 and compatible with **Eager mode**.
-
-## Run
 To run the code, simply run the estimate.py with specifying the following arguments directly in terminal.
+
+#### Requirements
+1- Numpy 2- tqdm 3- termcolor 4- matplotlib 5-pickle
 
 ### Args
 * '-n', '--network_size', default=None, type=int, help= '(9: RES9E, 16:RES16E) -- default set to: RES9ER'
@@ -13,9 +14,10 @@ To run the code, simply run the estimate.py with specifying the following argume
 * '-e', '--training_epochs', default=10, type=int, help='-- default set to 10'
 * '-v', '--visualize', default=1, type=int, help='(0, No visualization, 1: validate and visualize log signal) -- defualt set to: 1 '
 * '-l', '--logs', default=2, type=int, help='(Logs to visualize--> 0, train logs, 1: validate logs, 2: test logs) -- defualt set to: 2 '
+
 ### Example use  
 This runs in training mode with existing checkpoints then visualize the predicted signal of the test log/s
- - python3 estimate.py -t 1 
+ - python3 estimate.py -t 1
 
 
 ### Note:
