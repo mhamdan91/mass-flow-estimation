@@ -13,7 +13,7 @@ To run the code, simply run the estimate.py with specifying the following argume
 * '-t', '--train_mode', default=0, type=int, help='0: No training, 1: continue with existing checkpoint, 2: train from scratch) -- set to default: 0 '
 * '-e', '--training_epochs', default=10, type=int, help='-- default set to 10'
 * '-v', '--visualize', default=1, type=int, help='(0, No visualization, 1: validate and visualize log signal) -- defualt set to: 1 '
-* '-l', '--logs', default=2, type=int, help='(Logs to visualize--> 0, train logs, 1: validate logs, 2: test logs) -- defualt set to: 2 '
+* '-l', '--logs', default=2, type=int, help='(Logs to visualize--> 0: train logs, 1: validate logs, 2: test logs) -- defualt set to: 2 '
 
 ### Example use  
 This runs in training mode with existing checkpoints then visualize the predicted signal of the test log/s
@@ -21,7 +21,7 @@ This runs in training mode with existing checkpoints then visualize the predicte
 
 
 #### Note:
-* Test accuracy of test log using RES9_ER should gives an accuracy of **99.45%** and if trained with option 1 for 1 epoch (i.e. python3 estimate.py -t 1 -e 1), accuracy can top **99.67%**. This attached code is tested with TF1.12 and compabatible with linux and windows machines. Also, make sure to include/install all TF dependencies as per used in the code.
+* Test accuracy of test log using RES9_ER should give an accuracy of **99.45%** and if trained with option 1 for 1 epoch (i.e. python3 estimate.py -t 1 -e 1), accuracy can top **99.67%**. This attached code is tested with TF1.12 and compabatible with linux and windows machines. Also, make sure to include/install all TF dependencies as per used in the code.
 * When training, checkpoints for certain accuracies are automatically saved in generated_checkpoints folder inside the main checkpoints folder
 
 #### Aditional Note
