@@ -29,6 +29,6 @@ Gradcam code is provided seperately in the Gradcam_visualization folder, navigat
 *Live Gradcam* - a fun feature to lively visualize predictions is available in Live_cam_visualization folder.
 
 
-[*Live CAM Example*](example_live_cam.gif)
+![*Live CAM Example*](example_live_cam.gif)
 ## Author
 Muhammad K.A. Hamdan
