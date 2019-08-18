@@ -19,8 +19,7 @@ This code produces an CAM image for input image in this directory */images/ouput
 
 ##### Acknowledgements
 Part of the code was adapted from:
-TF session implementation.
-https://github.com/adityac94/Grad_CAM_plus_plus
+TF session implementation [here](https://github.com/adityac94/Grad_CAM_plus_plus)
 
 
 # Author
