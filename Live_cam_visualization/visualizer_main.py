@@ -14,7 +14,7 @@ import pickle as pk
 import platform
 from skimage.transform import resize
 import warnings
-import keyboard
+# import keyboard
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 layers = tf.keras.layers
