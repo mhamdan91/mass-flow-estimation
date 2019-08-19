@@ -80,17 +80,16 @@ def cam_vis(dir_path, pickle_path):
     model.load_weights(checkpoint_path+checkpoint_name)
 
     warnings.filterwarnings('ignore')
-        
+    start = time.time()
+    prediction_raw = []
+    step = tf.train.get_or_create_global_step()
+    
     for idx, img in enumerate(images):
         in_path = os.path.join(dir_path, img)
         sample_image = cf.data_normalization(cf.data_resize(cf.parse_function(in_path)))
         sample_image = tf.reshape(sample_image, [1, 96, 144, 3])
         image = tf.convert_to_tensor(sample_image)
 
-        start = time.time()
-        prediction_raw = []
-
-        step = tf.train.get_or_create_global_step()
         with tf.GradientTape(persistent=True) as tape:
             tape.watch(image)
             cost, layer_conv = model(image, conv_out=True)
