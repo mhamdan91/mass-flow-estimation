@@ -71,20 +71,22 @@ def cam_vis(dir_path, pickle_path):
     plt.ylabel('Weight (lbs)')
     cfact = 0.162
     cnt = 0
+
+    # Instantiate the model and configure tensorbaord and checkpoints
+    data_format = 'channels_last'
+    model = Res.Res9ER(data_format=data_format, include_top=True, pooling=None, classes=1)
+
+    checkpoint_name = 'Gradcam_RES_9ER'
+    model.load_weights(checkpoint_path+checkpoint_name)
+
+    warnings.filterwarnings('ignore')
+        
     for idx, img in enumerate(images):
         in_path = os.path.join(dir_path, img)
         sample_image = cf.data_normalization(cf.data_resize(cf.parse_function(in_path)))
         sample_image = tf.reshape(sample_image, [1, 96, 144, 3])
         image = tf.convert_to_tensor(sample_image)
 
-        # Instantiate the model and configure tensorbaord and checkpoints
-        data_format = 'channels_last'
-        model = Res.Res9ER(data_format=data_format, include_top=True, pooling=None, classes=1)
-
-        checkpoint_name = 'Gradcam_RES_9ER'
-        model.load_weights(checkpoint_path+checkpoint_name)
-
-        warnings.filterwarnings('ignore')
         start = time.time()
         prediction_raw = []
 
