@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle as pk
 import platform
+import time
 warnings.filterwarnings("ignore")
 tf.logging.set_verbosity(tf.logging.ERROR)  # disable to see tensorflow warnings
 config = tf.ConfigProto()
@@ -199,6 +200,7 @@ def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, 
 
 
 def predictor(network_size=None, batch_size=8, train_mode=0, epochs=10, visualize=True, target_subset='test'):
+    start_time = time.time()
     if batch_size > 215 or batch_size < 1:
         batch_size = 8
     if train_mode > 2 or train_mode < 0:
@@ -252,6 +254,7 @@ def predictor(network_size=None, batch_size=8, train_mode=0, epochs=10, visualiz
             target_data = test_data
             logs_N = 1
 
+        print(colored("Evaluation needed: {0:.2f} seconds to complete".format(time.time() - start_time), 'blue', attrs=['bold']))
         run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, target_data, logs_N, target_subset)
 
 
