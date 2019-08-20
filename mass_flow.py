@@ -112,7 +112,7 @@ def load_dataset(batch_size):
     return train_dataset, test_dataset, validation_dataset, train_data, test_data, validation_data
 
 
-def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, target_data, logs_N, target_subset):
+def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, target_data, logs_N, target_subset, start_time):
     # Generate predicted signal with proper information and save it
     # Obtain a signal
     signals = validate_model(batch_size, model, 1, logs_N, summary_writer, target_dataset, write_summary=False, return_losses=False)
@@ -156,6 +156,7 @@ def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, 
             break
     lb2kg = 0.453592
     # NOT DOING SUBPLOTS
+    stop_time = 0
     for i in range(len(signalz)):
         gt = np.squeeze(signalz[i][0]) * lb2kg
         prd = np.sum(signalz[i][2]) * lb2kg
@@ -188,6 +189,8 @@ def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, 
         plt.title(title)
         plt.legend(('Volume-Based Prediction Signal', 'DNN-Based Prediction Signal'), shadow=False, loc='upper right', handlelength=1, fontsize=8)
         print(colored('\nRun {0:} - Ground Truth:{1:} DNN Prediction:{2:} Accuracy:{3:.2%} '.format(i+1, gt_kg, Prd_kg, ACC1/100), 'red'))
+
+
         plt.xlim(left-lshift, right)
         plt.text(abs(.5*left)-lshift, top-bshift, 'Ground Truth:' + str(gt_kg) + 'Kgs' +
                  '\nDNN-Based Prediction:' + str(Prd_kg) + 'Kgs' +
@@ -197,6 +200,8 @@ def run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, 
                  {'color': 'k', 'fontsize': 8, 'bbox': dict(boxstyle="square", fc="w", ec="k", pad=0.5, alpha=0.3)})
         if i == len(signalz)-1:
             plt.show(i+1)
+        stop_time = time.time()
+    print(colored("Evaluation needed: {0:.2f} seconds to complete".format(stop_time - start_time), 'blue', attrs=['bold']))
 
 
 def predictor(network_size=None, batch_size=8, train_mode=0, epochs=10, visualize=True, target_subset='test'):
@@ -254,7 +259,7 @@ def predictor(network_size=None, batch_size=8, train_mode=0, epochs=10, visualiz
             target_data = test_data
             logs_N = 1
 
-        print(colored("Evaluation needed: {0:.2f} seconds to complete".format(time.time() - start_time), 'blue', attrs=['bold']))
-        run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, target_data, logs_N, target_subset)
+
+        run_and_visualize_signal(batch_size, model, summary_writer, target_dataset, target_data, logs_N, target_subset, start_time)
 
 
