@@ -138,7 +138,8 @@ def cam_vis(dir_path, pickle_path):
             cam = resize(cam, (480, 720))
 
             if OPENCV:
-                img = cv2.imread(in_path)
+                img = plt.imread(in_path)
+                img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
             else:
                 img = plt.imread(in_path)
 
