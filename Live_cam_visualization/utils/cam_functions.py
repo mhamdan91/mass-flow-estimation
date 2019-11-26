@@ -27,14 +27,15 @@ def parse_function(filename):
     # Decode the raw bytes so it becomes a tensor with type.
     splitter = filename.split('.')
     type_file = splitter[len(splitter)-1]
+
     if type_file == 'bmp':
         image = tf.image.decode_bmp(image_name, channels=3)
     elif type_file == 'jpg':
         image = tf.image.decode_jpeg(image_name, channels=3)
     elif type_file == 'png':
         image = tf.image.decode_png(image_name, channels=3)
-    else:
-        TypeError:"input_image is not supported, must be jpg, png, or bmp"
+    # else:
+    #     TypeError:"input_image is not supported, must be jpg, png, or bmp"
     # The type is now uint8 but we need it to be float.
     image = tf.to_float(image)
     # image = tf.cast(image, dtype="float32")

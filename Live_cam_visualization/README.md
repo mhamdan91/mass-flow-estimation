@@ -10,7 +10,9 @@ If you would like to visualize a paritcular run, make sure to provide the direct
 * '-i', '--input_dir', default='dataset/images/validation/2017_08_04_1128_Flow_Test_35_576', type=str, help= '(Full path of the run directory -- default set to validation dir'
 *  '-p', '--pickle_dir', default=pickle_path, type=str, help= '(Full path to pickle file -- default set to '
                                                                        './dataset/validation_Path_sample_dataset.pickle'
-                                                                       
+*  '-v', '--view_mode', default=False, type=bool, help= 'Use openCV to
+   visualize if True, else use matplotlib, default set to False'
+
 ### Simplist use  
 This runs the live_cam with **validation/2017_08_04_1128_Flow_Test_35_576** run located in *_/dataset/images/_* 
  - python3 live_visualization.py

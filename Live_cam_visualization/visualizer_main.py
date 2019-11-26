@@ -1,6 +1,7 @@
 from __future__ import absolute_import, division, print_function
 from model import RES_9ER_CAM as Res
 from utils import cam_functions as cf
+from tensorflow.python.client import device_lib
 from termcolor import colored
 from moviepy.video.io.bindings import  mplfig_to_npimage
 import subprocess
@@ -37,6 +38,14 @@ output_path = MAIN_dir + 'images'+path_sep + 'output' + path_sep
 
 
 
+def get_available_gpus():
+        local_device_protos = device_lib.list_local_devices()
+        for x in local_device_protos:
+            if x.device_type == 'GPU':
+                return True
+        return False
+
+
 def open_file(path):
     if machine_type == "Windows":
         os.startfile(path)
@@ -48,7 +57,7 @@ def open_file(path):
 
 
 
-def cam_vis(dir_path, pickle_path):
+def cam_vis(dir_path, pickle_path, opencv):
     cost_arr = []
     draw_cost = []
     idx_arr = []
@@ -62,7 +71,8 @@ def cam_vis(dir_path, pickle_path):
     images = sorted(os.listdir(dir_path))
     dir_len = len(images)
     LBKG = 0.453
-    OPENCV = True
+    OPENCV = opencv
+    GPU_available = get_available_gpus()
     if OPENCV:
         fig, ax2 = plt.subplots(nrows=1, ncols=1, figsize=(7.2, 4.8))
     else:
@@ -86,12 +96,15 @@ def cam_vis(dir_path, pickle_path):
     warnings.filterwarnings('ignore')
     start = time.time()
     prediction_raw = []
-
     step = tf.train.get_or_create_global_step()
     for idx, img in enumerate(images):
         in_path = os.path.join(dir_path, img)
         sample_image = cf.data_normalization(cf.data_resize(cf.parse_function(in_path)))
-        with tf.device('/gpu:0'):
+        if GPU_available:
+            device_name = '/gpu:0'
+        else:
+            device_name = '/cpu:0'
+        with tf.device(device_name):
             sample_image = tf.reshape(sample_image, [1, 96, 144, 3])
             image = tf.convert_to_tensor(sample_image)
             with tf.GradientTape(persistent=True) as tape:
