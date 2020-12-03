@@ -25,7 +25,7 @@ This runs in training mode with existing checkpoints then visualize the predicte
 * When training, checkpoints for certain accuracies are automatically saved in generated_checkpoints folder inside the main checkpoints folder
 
 #### Aditional Note
-* [**Gradcam**](Gradcam_visualization/) code is provided seperately in the Gradcam_visualization folder, navigate to the Readme file in that folder for instructions on usage.
+* [**Gradcam**](Gradcam_visualization/) code is provided separately in the Gradcam_visualization folder, navigate to the Readme file in that folder for instructions on usage.
 * [**Live Gradcam**](Live_cam_visualization/) - a fun feature to lively visualize predictions is available in Live_cam_visualization folder.
 
 * [**Paper**](https://arxiv.org/abs/1908.04387) 
