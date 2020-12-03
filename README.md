@@ -28,7 +28,7 @@ This runs in training mode with existing checkpoints then visualize the predicte
 * [**Gradcam**](Gradcam_visualization/) code is provided separately in the Gradcam_visualization folder, navigate to the Readme file in that folder for instructions on usage.
 * [**Live Gradcam**](Live_cam_visualization/) - a fun feature to lively visualize predictions is available in Live_cam_visualization folder.
 
-* [**Paper**](https://arxiv.org/abs/1908.04387) 
+* [**Paper**](https://ieeexplore.ieee.org/document/8999194) 
 
 
 ![*Live CAM Example*](example_live_cam.gif)
